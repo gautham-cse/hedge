@@ -23,12 +23,12 @@
     } from 'carbon-components-svelte'
 
     // hedge-authentication
-    // import { user } from '$lib/user'
+    import { user } from '$lib/user'
     import { error } from '@sveltejs/kit'
     import { goto } from '$app/navigation'
     import { fade } from 'svelte/transition'
     import { preventDefault } from 'svelte/legacy'
-    // import { account } from '$lib/appwrite';
+    import { account } from '$lib/appwrite';
     import { onMount } from 'svelte';
 
     // hedge-constraints
@@ -41,10 +41,17 @@
     let timeout = undefined
     let errorMessage = "Login failed. Please try again"
     $: showNotification = timeout !== undefined
+    
+    let invalid_password = false
+    $: invalid_password = !/^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]{8,}$/.test(app_password);
 
     // @ts-ignore
     const hedge_login = async(e) => {
         e.preventDefault()
+        
+        // Prevent multiple submission // debounce
+        if (isLoading) return;
+
         isLoading = true
 
         /* const form = e.target */
@@ -52,21 +59,21 @@
         /* const { email, password } = formData  */
 
         if (!app_email || !app_password) {
-            errorMessage = "Email and password are required"
+            errorMessage = "email and password are required"
             timeout = 5000
+            setTimeout(() => { timeout = undefined; }, 5000)
+            isLoading = false
             return
         }
         try {
             await user.login(app_email, app_password)
+            app_password = ''
             goto('/dashboard')
         }
         catch(e) {
             errorMessage = e.message || "Invalid email or password"
             timeout = 5000
-
-            setTimeout(() => {
-                timeout = undefined 
-            }, 5000);
+            setTimeout(() => { timeout = undefined }, 5000)
         } finally {
             isLoading = false
         }
@@ -75,10 +82,10 @@
     const hedge_auth_status = async () => {
         try {
             const session = await account.getSession('current')
-            if (!session) { goto('/') }
-            else if (session) { goto('/dashboard') }
+            if (session) goto('/dashboard')
+            else goto('/') 
         }
-        catch(e) {
+        catch {
             goto('/')
         } 
     }
@@ -87,12 +94,6 @@
     onMount(async () => {
         try { await hedge_auth_status() } 
         finally { initialLoad = false }
-
-        /* const urlParams = new URLSearchParams(window.location.search)
-        urlParams.set('name', 'hedge')
-        urlParams.set('phase', 'auth-strict')
-        urlParams.set('dev-serve', true)
-        window.history.replaceState({}, '', '?' + urlParams.toString()) */
     })
 
     function handle_context_menu(e) { e.preventDefault() } 
