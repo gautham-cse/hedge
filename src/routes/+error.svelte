@@ -10,10 +10,15 @@
     let path = ""
     let theme = "g100" 
 
-    onMount (async () => { path = window.location.pathname; await import ('carbon-components-svelte/css/all.css')})
+    onMount (async () => { 
+        path = window.location.pathname; 
+        await import ('carbon-components-svelte/css/all.css')
+    })
 </script>
 
-<svelte:head><title>{'Error:'}{path}</title></svelte:head>
+<svelte:head>
+    <title>{'Error:'}{path}</title>
+</svelte:head>
 <Theme bind:theme persist persistKey="app_hedge-theme" />
 
 <div class="App-Err">

@@ -4,7 +4,6 @@
 
 <script>
     // @ts-nocheck
-    // svelte-carbondesign-system
     import './styles/root.css'
     import 'carbon-components-svelte/css/all.css'
     import { ChevronRight } from 'carbon-icons-svelte'
@@ -22,7 +21,6 @@
         ToastNotification,
     } from 'carbon-components-svelte'
 
-    // hedge-authentication
     import { user } from '$lib/user'
     import { error } from '@sveltejs/kit'
     import { goto } from '$app/navigation'
@@ -31,7 +29,6 @@
     import { account } from '$lib/appwrite';
     import { onMount } from 'svelte';
 
-    // hedge-constraints
     let open = false 
     let app_email = ''
     let app_password = ''
@@ -48,10 +45,8 @@
     // @ts-ignore
     const hedge_login = async(e) => {
         e.preventDefault()
-        
-        // Prevent multiple submission // debounce
-        if (isLoading) return;
 
+        if (isLoading) return
         isLoading = true
 
         /* const form = e.target */
@@ -96,14 +91,12 @@
         finally { initialLoad = false }
     })
 
-    function handle_context_menu(e) { e.preventDefault() } 
-    
+    function handle_context_menu(e) { e.preventDefault() }
 </script>
 
 <div class="App-Title"><h2>Hedge <span style="font-size: 13px;">{' / '}{pageTitle}</span> </h2></div>
 <div class="App-Theme"><Button kind="ghost" on:click={() => (open = true)}>Theme</Button></div>
 
-<!-- hedge-theme-constraint -->
 <Modal bind:open passiveModal modalHeading="App Theme">
     <Theme bind:theme persist persistKey="app_hedge-theme" />
     <RadioButtonGroup legendText="Choose from below" bind:selected={theme}>
@@ -113,11 +106,9 @@
     </RadioButtonGroup>
 </Modal>
 
-<!-- hedge-login-form -->
 <div class="App-Login--Flex" on:contextmenu={handle_context_menu} aria-label="disable right click context menu" role="button" tabindex="0">
     <div class="App-Login--Form">
-        <!--[--><!--]-->
-        <!--[--><!--]-->
+        
         <FluidForm style="width: auto;" method="post" on:submit={hedge_login}>
             <div style="display: flex; justify-content: start;"> 
                 <div>
@@ -125,14 +116,14 @@
                     <div>Don't have an account? <Link inline href="/register">Sign up</Link></div>
                 </div>
             </div>
+            
             <div style="margin-top: 25px; display: flex; justify-content: center;">
                 <div>
                     <TextInput labelText="Email Address" style="width: 350px;" name='email' bind:value={app_email} autocomplete="off" spellcheck="false" required />
                     <PasswordInput type="password" labelText="Password" name='password' bind:value={app_password} required />
                 </div>
             </div>
-            <!--[--><!--]-->
-            <!--[--><!--]-->
+
             <div style="margin-top: 15px; width: auto; display: flex; justify-content: center;">
                 <Button icon={ChevronRight} class="App-Login--Btn" style="margin-right: auto;" type="submit">
                     {#if isLoading}
@@ -144,22 +135,17 @@
                 <Button class="App-Forgot--Btn" style="margin-left: auto;" on:click={()=>goto('/forgot')}>Forgot Password</Button>
             </div>
         </FluidForm>
-        <!--[--><!--]-->
-        <!--[--><!--]-->
+
         <div style="margin-top: 15px; width: auto; display: flex; justify-content: start; width: auto;">
             <Link size="sm" href="/providers/serve/">More Login Options</Link>
         </div>
-        <!--[--><!--]-->
-        <!--[--><!--]-->
     </div>
 </div>
 
-<!-- hedge-copyright -->
 <div style="position: fixed; bottom: 0; margin: 12px;">
     <p style="font-size: 12px; margin-left: 32px;"></p>
 </div>
 
-<!-- hedge-authconfig-error -->
 {#if showNotification}
   <div transition:fade>
     <ToastNotification
@@ -171,7 +157,6 @@
       caption={new Date().toLocaleString()}
       on:close={(e) => {
         timeout = undefined;
-        // console.log(e.detail.timeout);
       }}
     />
   </div>
