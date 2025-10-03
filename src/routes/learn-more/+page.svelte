@@ -1,3 +1,7 @@
+<script>
+    import { Link } from "carbon-components-svelte";
+
+</script>
 <style>
 header {
     background: #1a1a1a;
@@ -135,6 +139,17 @@ li {
     <li>Integrated patch management and orchestrated remediation workflows.</li>
     <li>AI-driven threat intelligence correlation and secure sharing.</li>
     <li>Deeper orchestration with security operations platforms for end-to-end automation.</li>
+    </ul>
+</section>
+
+<section id="video-demo--virustotal">
+    <h2>VirusTotal Integration Demo</h2>
+    <p>
+    Runs malware scan via VirusTotal Integration
+    </p>
+    <ul>
+    <li>This video plays a working demo of VirusTotal Integration into one of our parts of Self-Healing System.</li>
+    <li><Link href="/serve/storage/videos/vtdemo/">Click here</Link></li>
     </ul>
 </section>
 
