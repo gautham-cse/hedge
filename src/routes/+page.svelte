@@ -1,5 +1,5 @@
 <svelte:head>
-    <title> {'Hedge'} </title>
+    <title> {'Login'} </title>
 </svelte:head>
 
 <script>
@@ -137,7 +137,8 @@
         </FluidForm>
 
         <div style="margin-top: 15px; width: auto; display: flex; justify-content: start; width: auto;">
-            <Link size="sm" href="/providers/serve/">More Login Options</Link>
+            <!-- <Link size="sm" href="/providers/serve/">More Login Options</Link> -->
+            <Link size="sm" href="/learn-more/">Learn more</Link>
         </div>
     </div>
 </div>
