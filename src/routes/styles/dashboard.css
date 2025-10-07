@@ -1,0 +1,36 @@
+.ax-dash--context-a {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-texts {
+    position: fixed;
+    bottom: 0;
+    margin: 18px;
+    width: calc(100% - 36px);
+}
+
+.version {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+.overlay,.spinner.center{position:absolute;left:0;right:0;top:0;bottom:0;margin:auto}
+    .spinner{font-size:30px;position:relative;display:inline-block;width:1em;height:1em}
+    .spinner-blade{position:absolute;left:.4629em;bottom:0;width:.074em;height:.2777em;border-radius:.5em;background-color:transparent;transform-origin:center -0.2222em;-webkit-animation:1s linear infinite spinner-fade;animation:1s linear infinite spinner-fade}
+    .spinner-blade:first-child{-webkit-animation-delay:0s;animation-delay:0s;transform:rotate(0)}
+    .spinner-blade:nth-child(2){-webkit-animation-delay:83ms;animation-delay:83ms;transform:rotate(30deg)}
+    .spinner-blade:nth-child(3){-webkit-animation-delay:166ms;animation-delay:166ms;transform:rotate(60deg)}
+    .spinner-blade:nth-child(4){-webkit-animation-delay:249ms;animation-delay:249ms;transform:rotate(90deg)}
+    .spinner-blade:nth-child(5){-webkit-animation-delay:332ms;animation-delay:332ms;transform:rotate(120deg)}
+    .spinner-blade:nth-child(6){-webkit-animation-delay:415ms;animation-delay:415ms;transform:rotate(150deg)}
+    .spinner-blade:nth-child(7){-webkit-animation-delay:498ms;animation-delay:498ms;transform:rotate(180deg)}
+    .spinner-blade:nth-child(8){-webkit-animation-delay:581ms;animation-delay:581ms;transform:rotate(210deg)}
+    .spinner-blade:nth-child(9){-webkit-animation-delay:664ms;animation-delay:664ms;transform:rotate(240deg)}
+    .spinner-blade:nth-child(10){-webkit-animation-delay:747ms;animation-delay:747ms;transform:rotate(270deg)}
+    .spinner-blade:nth-child(11){-webkit-animation-delay:.83s;animation-delay:.83s;transform:rotate(300deg)}
+    .spinner-blade:nth-child(12){-webkit-animation-delay:913ms;animation-delay:913ms;transform:rotate(330deg)}
+    @-webkit-keyframes spinner-fade{0%{background-color:white;}100%{background-color:transparent}}
+    @keyframes spinner-fade{0%{background-color:white;}100%{background-color:transparent}}

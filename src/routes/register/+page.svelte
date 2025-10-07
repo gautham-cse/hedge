@@ -122,8 +122,6 @@
 <!-- hedge-registration-form -->
 <div class="App-Login--Flex">
     <div class="App-Login--Form">
-        <!--[--><!--]-->
-        <!--[--><!--]-->
         <FluidForm style="width: auto;" on:submit={hedge_register}>
             <div style="display: flex; justify-content: start;"> 
                 <div>
@@ -138,8 +136,6 @@
                     <PasswordInput type="password" labelText="Password" bind:value={app_password} required />
                 </div>
             </div>
-            <!--[--><!--]-->
-            <!--[--><!--]-->
             <div style="margin-top: 15px; width: auto; display: flex; justify-content: center;">
                 <Button icon={ChevronRight} class="App-Login--Btn" style="margin-right: auto;" type="submit" disabled={isLoading}>
                     {#if isLoading}
@@ -150,13 +146,9 @@
                 </Button>
             </div>
         </FluidForm>
-        <!--[--><!--]-->
-        <!--[--><!--]-->
         <div style="margin-top: 15px; width: auto; display: flex; justify-content: start; width: auto;">
             <!-- <Link size="sm" href="/"></Link> -->
         </div>
-        <!--[--><!--]-->
-        <!--[--><!--]-->
     </div>
 </div>
 
